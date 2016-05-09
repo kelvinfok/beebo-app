@@ -1,0 +1,157 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Create your listing
+    </div>
+    <br><br>
+    <div class="panel-body">
+        <div class="container">
+            <%= form_for @house, html: {multipart: true} do |f| %>
+
+            <div class="row">
+                <!-- Start Row 1 -->
+                <div class="col-md-4 select">
+                    <div class="form-group">
+                        <label>Home Type</label><br/>
+                        <%= f.select :home_type, [["HDB", "HDB"], ["Condominium", "Condominium"], ["Landed", "Landed"]], id: "home_type", prompt: "Select", class: "form-control" %>
+                    </div>
+                </div>
+                <div class="col-md-4 select">
+                    <div class="form-group">
+                        <label>Room Type</label><br/>
+                        <%= f.select :room_type, [["Studio", "Studio"], ["3 Bedrooms", "3 Bedrooms"], ["4 Bedrooms", "4 Bedrooms"], ["5 Bedrooms", "5 Bedrooms"]], id: "room_type", prompt: "Select", class: "form-control" %>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row 1 -->
+
+            <div class="row">
+                <!-- Start Row 2-->
+                <div class="col-md-4 select">
+                    <div class="form-group">
+                        <label>Bed Rooms</label><br/>
+                        <%= f.select :bed_room, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"]], id: "bedroom", prompt: "Select", class: "form-control" %>
+                    </div>
+                </div>
+                <div class="col-md-4 select">
+                    <div class="form-group">
+                        <label>Bath Rooms</label><br/>
+                        <%= f.select :bath_room, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"]], id: "bathroom", prompt: "Select", class: "form-control" %>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row 2 -->
+
+            <div class="row">
+                <!-- Start Row 3-->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Size (Sqft)</label>
+                        <%= f.text_field :size, placeholder: "Size", id: "size", class: "form-control" %>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row 3 -->
+
+            <div class="row">
+                <!-- Start Row 4-->
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Listing Name</label><br/>
+                        <%= f.text_field :listing_name, id: "listing_name", placeholder: "Be clear and descriptive", class: "form-control" %>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row 4 -->
+
+            <div class="row">
+                <!-- Start Row 5-->
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Summary</label><br/>
+                        <%= f.text_area :summary, rows: 5, placeholder: "Tell about your house", id: "summary", class: "form-control" %>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row 5 -->
+
+            <div class="row">
+                <!-- Start Row 6-->
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Address</label><br/>
+                        <%= f.text_field :address, placeholder: "What is your full address?", id: "address", class: "form-control" %>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row 6 -->
+
+            <div class="row">
+                <!-- Start Row 7-->
+                <div class="col-md-4 select">
+                    <div class="form-group ">
+                        <label>Region</label><br/>
+                        <%= f.select :region, [["Central", "Central"],["North", "North"], ["South", "South"], ["East", "East"], ["West", "West"]], id: "region", prompt: "Select", class: "form-control" %>
+                    </div>
+                </div>
+                <div class="col-md-4 select">
+                    <div class="form-group">
+                        <label>Fee Simple</label><br/>
+                        <%= f.select :fee_simple, [["Freehold", "Freehold"],["Non-Freehold", "Non-Freehold"]], id: "fee_simple", prompt: "Select", class: "form-control" %>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row 7-->
+
+            <div class="row">
+                <!-- Start Row 8-->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Active</label><br/>
+                        <%= f.check_box :isActive, id: "isActive" %>
+                        Make listing public
+                    </div>
+                </div>
+            </div>
+            <!-- End Row 8-->
+
+            <div class="row">
+                <!-- Start Row 9-->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Selling Price</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">SGD $</div>
+                            <%= f.text_field :price, placeholder: "Price", id: "price", class: "form-control" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row 9-->
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <span class="btn btn-default btn-file">
+                  <i class="fa fa-cloud-upload fa-lg"></i> Upload Photos
+                <%= file_field_tag "images[]", type: :file, multiple: true %>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div id="photos"><%= render 'photos/list' %></div>
+
+            <div class="row">
+                <!-- Start Row 10 -->
+                <div class="col-md-4">
+                    <div class="actions">
+                        <%= f.submit "Save", class: "btn btn-primary", style: 'width: 300px', id: "btn-save-create-new-house" %>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row 10-->
+
+            <% end %>
+        </div>
+    </div>
+</div>

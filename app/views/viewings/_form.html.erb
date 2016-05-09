@@ -1,0 +1,44 @@
+<%= form_for ([@house, @house.viewings.new]) do |f| %>
+
+<div class="row">
+
+<div class="col-md-12">
+<%= f.text_field :appointment_date, class: "form-control", placeholder: "Select Date" %>
+</div>
+<br>
+<div class="col-md-12" style="display: none">
+<%= f.collection_select :appointment_time, Viewing::TIMINGS, :to_s, :to_s, placeholder: "Select Timing" %>
+</div>
+
+</div>
+
+
+
+  <%= f.hidden_field :house_id, value: @house.id %>
+  <%= f.hidden_field :price, value: @house.price %>
+  <br>
+  <%= f.submit "Make Appointment", class: "btn btn-primary", style: "width: 178px;" %>
+<% end %>
+
+
+
+<br>
+<div class="btn-group">
+  <button type="button" style="width: 178px" class="btn btn-default dropdown-toggle wide" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Actions <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><%= link_to "Edit Listing", edit_house_url(@house) %></li>
+    <li><a href="#">Delete Listing</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Report Listing</a></li>
+  </ul>
+</div>
+
+
+<script>
+  $(function() {
+    $('#viewing_appointment_date').datepicker({format:'dd-mm-yy', minDate: 0 });
+  });
+</script>
